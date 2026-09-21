@@ -44,3 +44,16 @@ For default modeling, only disbursed loans are eligible because rejected, submit
 ## Disclaimer
 
 All datasets used in this project are synthetic and created solely for educational and portfolio purposes. They do not contain real customer, borrower, or financial-institution data and do not represent any real institution's credit policy or lending decisions.
+
+## Credit risk model training
+
+Default modeling uses disbursed loans only, because they are the records with genuine performance exposure. The data is split by customer, ensuring the same customer cannot appear in both the training and final test sets. Training uses five-fold customer-grouped cross-validation.
+
+The current training benchmarks are Logistic Regression and a fixed-parameter Random Forest benchmark (`mtry = 6`, `min_n = 15`, `trees = 500`). Both use application-time predictors only; post-disbursement leakage fields are excluded. The final test set remained untouched throughout training.
+
+These are grouped cross-validation results, **not final test performance**:
+
+- Logistic Regression: ROC-AUC approximately 0.686; PR-AUC approximately 0.387.
+- Random Forest benchmark: ROC-AUC approximately 0.671; PR-AUC approximately 0.369.
+
+No final model winner has been declared. Final test-set evaluation is reserved for the subsequent evaluation step.
