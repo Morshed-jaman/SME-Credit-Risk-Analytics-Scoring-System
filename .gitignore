@@ -1,0 +1,54 @@
+# R session and history files
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj
+
+# R package and build artifacts
+renv/library/
+renv/staging/
+*.tar.gz
+*.Rcheck/
+
+# Environment variables and database credentials
+.env
+.env.*
+!.env.example
+*.pgpass
+pgpass.conf
+
+# Model artifacts
+models/*
+!models/.gitkeep
+*.rds
+*.RDS
+*.rda
+*.RData
+*.pkl
+*.pickle
+*.joblib
+
+# Generated data and reports
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+reports/*
+!reports/.gitkeep
+
+# Temporary and operating-system files
+tmp/
+temp/
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Shiny/R web assets generated at runtime
+app/.shinybook/
