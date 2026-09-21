@@ -57,3 +57,17 @@ These are grouped cross-validation results, **not final test performance**:
 - Random Forest benchmark: ROC-AUC approximately 0.671; PR-AUC approximately 0.369.
 
 No final model winner has been declared. Final test-set evaluation is reserved for the subsequent evaluation step.
+
+
+## Final holdout evaluation
+
+The final holdout contains 1,275 disbursed-loan records and remains customer-disjoint from the training partition. The figures below are **final test results**, distinct from the grouped cross-validation results above.
+
+- Logistic Regression: ROC-AUC 0.650, PR-AUC 0.381, Gini 0.299, KS 0.240, and Brier score 0.167.
+- Random Forest benchmark: ROC-AUC 0.627, PR-AUC 0.352, Gini 0.255, KS 0.208, and Brier score 0.170.
+
+Logistic Regression achieved slightly stronger final-test discrimination and calibration on the primary and secondary metrics, although the difference is small. At the pre-specified 0.50 threshold, both models have low default recall; threshold-dependent measures are therefore supportive rather than model-selection criteria. Logistic Regression also retains an interpretability advantage through coefficient and odds-ratio explanations. Neither model should be regarded as production-ready.
+
+### Evaluation limitations
+
+Results are based on synthetic data and a 1,275-row customer-grouped holdout. The modeling population has no rejected-applicant outcomes, which can introduce approval/selection bias; no reject inference was performed. The data is a performance snapshot, without temporal/out-of-time validation, external validation, or production credit-policy validation.
