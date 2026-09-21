@@ -71,3 +71,10 @@ Logistic Regression achieved slightly stronger final-test discrimination and cal
 ### Evaluation limitations
 
 Results are based on synthetic data and a 1,275-row customer-grouped holdout. The modeling population has no rejected-applicant outcomes, which can introduce approval/selection bias; no reject inference was performed. The data is a performance snapshot, without temporal/out-of-time validation, external validation, or production credit-policy validation.
+
+
+## Demonstration credit scoring and risk banding
+
+Logistic Regression is selected as the demonstration scoring model because it showed slightly stronger final-holdout discrimination, PR-AUC, KS, and calibration than the Random Forest benchmark. Its predicted probability of default (PD) is transformed into an illustrative 300-850 credit score: Base Score 600, Base Odds (good:bad) 20:1, and PDO 50. Higher PD produces a lower score.
+
+Illustrative score bands range from Very Low Risk to Very High Risk and attach monitoring labels only; they are not lending approval, rejection, or automated decision rules. This is a portfolio demonstration scale, not an IDLC scorecard, a credit-bureau score, regulatory validation, or a production lending policy. It remains subject to the synthetic-data, disbursed-loan selection, reject-inference, external-validation, and out-of-time-validation limitations described above.
