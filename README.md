@@ -78,3 +78,11 @@ Results are based on synthetic data and a 1,275-row customer-grouped holdout. Th
 Logistic Regression is selected as the demonstration scoring model because it showed slightly stronger final-holdout discrimination, PR-AUC, KS, and calibration than the Random Forest benchmark. Its predicted probability of default (PD) is transformed into an illustrative 300-850 credit score: Base Score 600, Base Odds (good:bad) 20:1, and PDO 50. Higher PD produces a lower score.
 
 Illustrative score bands range from Very Low Risk to Very High Risk and attach monitoring labels only; they are not lending approval, rejection, or automated decision rules. This is a portfolio demonstration scale, not an IDLC scorecard, a credit-bureau score, regulatory validation, or a production lending policy. It remains subject to the synthetic-data, disbursed-loan selection, reject-inference, external-validation, and out-of-time-validation limitations described above.
+
+## Shiny management dashboard
+
+The local Shiny dashboard provides four tabs: Executive Overview, Credit Risk Analysis, Model Performance, and Applicant Scoring. The scoring tab uses the already-fitted Logistic Regression workflow to present a demonstration-only probability of default, 300-850 score, illustrative risk band, and monitoring label; it does not make lending decisions.
+
+Launch locally with:
+
+`Rscript -e "shiny::runApp('app')"`
