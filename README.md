@@ -23,8 +23,10 @@ This portfolio project demonstrates an end-to-end SME credit risk analytics and 
    - `vw_default_analysis`
    - `vw_business_segment_performance`
    - `vw_customer_exposure`
-5. Ordered R scripts will next handle cleaning, EDA, model training/evaluation, and applicant scoring.
-6. A Shiny application in `app/` will surface management KPIs, portfolio risk, model performance, and interactive scoring.
+5. The R data-quality pipeline preserves original source values while adding deterministic median-imputed helper fields, missingness indicators, risk bands, operational duration metrics, and credit-decision-time engineered features.
+6. A leakage-safe modeling dataset is created from disbursed loans only, so default modeling uses borrowers with genuine performance exposure and excludes post-disbursement performance variables from predictors.
+7. Ordered R scripts will next handle EDA, model training/evaluation, and applicant scoring.
+8. A Shiny application in `app/` will surface management KPIs, portfolio risk, model performance, and interactive scoring.
 
 ## Credit-SME KPI definitions
 
@@ -36,6 +38,8 @@ This portfolio project demonstrates an end-to-end SME credit risk analytics and 
 The dataset stores current/final application status rather than a full historical event log, so application-funnel analysis is presented as current-state distribution plus stage-reached counts inferred from workflow dates.
 
 Vintage/cohort analysis is snapshot-based because the synthetic dataset contains current loan-performance outcomes rather than full monthly performance histories.
+
+For default modeling, only disbursed loans are eligible because rejected, submitted, under-review, and approved-but-not-disbursed applications do not have genuine loan-performance outcomes in this synthetic portfolio.
 
 ## Disclaimer
 
